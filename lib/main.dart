@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(WineApp());
 }
-
+// 메인화면 최적화 사이즈 768*768
 class WineApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
