@@ -61,72 +61,92 @@ class WineApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Wine Curation'),
-      ),
-      body: Column(
+      // appBar: AppBar(
+      //   title: Text('Wine Curation'),
+      // ),
+      body: Stack(
         children: [
-          // Search Bar and Button
-          Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    onChanged: (value) {
-                      searchQuery = value;
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Search for a wine...',
-                      border: OutlineInputBorder(),
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 10.0),
-                ElevatedButton(
-                  onPressed: _searchWines,
-                  child: Text('Search'),
-                ),
-              ],
+          // Background Image
+          Positioned.fill(
+            child: Image.asset(
+              'assets/main.png',
+              fit: BoxFit.cover,
             ),
           ),
-          // GridView for displaying wines
-          Expanded(
-            child: GridView.builder(
-              padding: EdgeInsets.all(10.0),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10.0,
-                mainAxisSpacing: 10.0,
-                childAspectRatio: 2 / 3,
+          // Main Content
+          Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                  maxWidth: 768,
+                  maxHeight: 768
               ),
-              itemCount: filteredWines.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => WineDetailScreen(wine: filteredWines[index]),
-                      ),
-                    );
-                  },
-                  child: GridTile(
-                    child: Image.asset(
-                      filteredWines[index]['image']!,
-                      height: 200.0,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    footer: GridTileBar(
-                      backgroundColor: Colors.black54,
-                      title: Text(filteredWines[index]['name']!),
+              child: Column(
+                children: [
+                  // Search Bar and Button
+                  Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            onChanged: (value) {
+                              searchQuery = value;
+                            },
+                            decoration: InputDecoration(
+                              hintText: 'Search for a wine...',
+                              border: OutlineInputBorder(),
+                              contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10.0),
+                        ElevatedButton(
+                          onPressed: _searchWines,
+                          child: Text('Search'),
+                        ),
+                      ],
                     ),
                   ),
-                );
-              },
+                  // GridView for displaying wines
+                  Expanded(
+                    child: GridView.builder(
+                      padding: EdgeInsets.all(10.0),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10.0,
+                        mainAxisSpacing: 10.0,
+                        childAspectRatio: 2 / 3,
+                      ),
+                      itemCount: filteredWines.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => WineDetailScreen(wine: filteredWines[index]),
+                              ),
+                            );
+                          },
+                          child: GridTile(
+                            child: Image.asset(
+                              filteredWines[index]['image']!,
+                              height: 200.0,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            footer: GridTileBar(
+                              backgroundColor: Colors.black54,
+                              title: Text(filteredWines[index]['name']!),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
+          )
         ],
       ),
     );
@@ -142,7 +162,11 @@ class WineDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(wine['name']!),
+        title: Image.asset(
+          'assets/thehyundailogo.png',
+          fit: BoxFit.fitHeight,
+        ),
+        backgroundColor: Colors.black54
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
