@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  image_picker: ^1.1.2 # 이미지 캡처를 위한 패키지
+  google_mlkit_text_recognition: ^0.2.0 # 텍스트 인식을 위한 패키지
 
 
   # The following adds the Cupertino Icons font to your application.

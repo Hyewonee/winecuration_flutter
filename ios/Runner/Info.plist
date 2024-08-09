@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Winecuration</string>
+	<string>와큐</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -45,5 +45,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+    <string>와인 레이블을 스캔하기 위해 카메라를 사용합니다.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>와인 레이블을 스캔하기 위해 사진 라이브러리를 사용합니다.</string>
 </dict>
 </plist>
